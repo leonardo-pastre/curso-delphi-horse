@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2022/11/23 10:50:25.000.807,=C:\Users\leonardo-pastre\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/04/26 16:26:58.000.915,=C:\Users\leonardo-pastre\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/05/06 15:22:08.614,C:\Users\leonardo-pastre\Documents\Estudos\curso-delphi-horse\backend\api\business\Business.dproj=C:\Users\leonardo-pastre\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2023/05/06 15:37:05.296,=C:\Users\leonardo-pastre\Documents\Estudos\curso-delphi-horse\backend\api\business\Unit1.pas</Transaction>
+    <Transaction>2023/05/06 15:38:54.194,C:\Users\leonardo-pastre\Documents\Estudos\curso-delphi-horse\backend\api\business\src\providers\Providers.Connection.pas=C:\Users\leonardo-pastre\Documents\Estudos\curso-delphi-horse\backend\api\business\Unit1.pas</Transaction>
+    <Transaction>2023/05/06 15:38:54.194,C:\Users\leonardo-pastre\Documents\Estudos\curso-delphi-horse\backend\api\business\src\providers\Providers.Connection.dfm=C:\Users\leonardo-pastre\Documents\Estudos\curso-delphi-horse\backend\api\business\Unit1.dfm</Transaction>
+    <Transaction>2023/05/07 00:23:37.239,=C:\Users\leonardo-pastre\Documents\Estudos\curso-delphi-horse\backend\api\business\Unit1.pas</Transaction>
+    <Transaction>2023/05/07 00:24:03.865,C:\Users\leonardo-pastre\Documents\Estudos\curso-delphi-horse\backend\api\business\src\providers\Providers.Cadastro.dfm=C:\Users\leonardo-pastre\Documents\Estudos\curso-delphi-horse\backend\api\business\Unit1.dfm</Transaction>
+    <Transaction>2023/05/07 00:24:03.865,C:\Users\leonardo-pastre\Documents\Estudos\curso-delphi-horse\backend\api\business\src\providers\Providers.Cadastro.pas=C:\Users\leonardo-pastre\Documents\Estudos\curso-delphi-horse\backend\api\business\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>

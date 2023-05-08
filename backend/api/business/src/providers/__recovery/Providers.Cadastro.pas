@@ -1,0 +1,93 @@
+unit Providers.Cadastro;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Providers.Connection, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error,
+  FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys,
+  FireDAC.Phys.PG, FireDAC.Phys.PGDef, FireDAC.ConsoleUI.Wait, Data.DB, FireDAC.Comp.Client, FireDAC.Stan.Param,
+  FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet, System.JSON,
+  System.Generics.Collections, FireDAC.VCLUI.Wait;
+
+type
+  TProvidersCadastro = class(TProvidersConnection)
+    QryPesquisa: TFDQuery;
+    QryRecordCount: TFDQuery;
+    QryCadastro: TFDQuery;
+    QryRecordCountCOUNT: TLargeintField;
+  private
+
+  public
+    function Append(const AJSON: TJSONObject): Boolean; virtual;
+    function Update(const AJSON: TJSONObject): Boolean; virtual;
+    function Delete: Boolean; virtual;
+    function ListAll(const AParams: TDictionary<string, string>): TFDQuery; virtual;
+    function GetById(const AId: string): TFDQuery; virtual;
+    function GetRecordCount: Int64; virtual;
+  end;
+
+var
+  ProvidersCadastro: TProvidersCadastro;
+
+implementation
+
+uses
+  DataSet.Serialize;
+
+{%CLASSGROUP 'System.Classes.TPersistent'}
+
+{$R *.dfm}
+
+{ TProvidersCadastro }
+
+function TProvidersCadastro.Append(const AJSON: TJSONObject): Boolean;
+begin
+  QryCadastro.SQL.Add('where 1 <> 1');
+  QryCadastro.Open;
+  QryCadastro.LoadFromJSON(AJSON, False);
+  Result := QryCadastro.ApplyUpdates(0) = 0;
+end;
+
+function TProvidersCadastro.Delete: Boolean;
+begin
+  QryCadastro.Delete;
+  Result := QryCadastro.ApplyUpdates(0) = 0;
+end;
+
+function TProvidersCadastro.GetById(const AId: string): TFDQuery;
+begin
+  QryCadastro.SQL.Add('where id = :id');
+  QryCadastro.ParamByName('id').AsLargeInt := AId.ToInt64;
+  QryCadastro.Open;
+  Result := QryCadastro;
+end;
+
+function TProvidersCadastro.GetRecordCount: Int64;
+begin
+  QryRecordCount.Open;
+  Result := QryRecordCountCOUNT.AsLargeInt;
+end;
+
+function TProvidersCadastro.ListAll(const AParams: TDictionary<string, string>): TFDQuery;
+begin
+  if AParams.ContainsKey('limit') then
+  begin
+    QryPesquisa.FetchOptions.RecsMax := StrToIntDef(AParams.Items['limit'], 50);
+    QryPesquisa.FetchOptions.RowsetSize := StrToIntDef(AParams.Items['limit'], 50);
+  end;
+  if AParams.ContainsKey('offset') then
+  begin
+    QryPesquisa.FetchOptions.RecsSkip := StrToIntDef(AParams.Items['offset'], 0);
+  end;
+
+  QryPesquisa.Open();
+  Result := QryPesquisa;
+end;
+
+function TProvidersCadastro.Update(const AJSON: TJSONObject): Boolean;
+begin
+  QryCadastro.MergeFromJSONObject(AJSON, False);
+  Result := QryCadastro.ApplyUpdates(0) = 0;
+end;
+
+end.

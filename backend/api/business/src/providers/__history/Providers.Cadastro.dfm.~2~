@@ -1,0 +1,21 @@
+inherited ProvidersCadastro: TProvidersCadastro
+  inherited FDPhysPgDriverLink: TFDPhysPgDriverLink
+    Left = 176
+    Top = 56
+  end
+  object QryPesquisa: TFDQuery
+    Connection = FDConnection
+    Left = 56
+    Top = 160
+  end
+  object QryRecordCount: TFDQuery
+    Connection = FDConnection
+    Left = 176
+    Top = 160
+  end
+  object QryCadastro: TFDQuery
+    Connection = FDConnection
+    Left = 280
+    Top = 160
+  end
+end

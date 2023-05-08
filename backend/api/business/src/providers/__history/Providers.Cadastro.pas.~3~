@@ -1,0 +1,37 @@
+unit Providers.Cadastro;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Providers.Connection, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error,
+  FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys,
+  FireDAC.Phys.PG, FireDAC.Phys.PGDef, FireDAC.ConsoleUI.Wait, Data.DB, FireDAC.Comp.Client, FireDAC.Stan.Param,
+  FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet,
+  System.Generics.Collections;
+
+type
+  TProvidersCadastro = class(TProvidersConnection)
+    QryPesquisa: TFDQuery;
+    QryRecordCount: TFDQuery;
+    QryCadastro: TFDQuery;
+  private
+
+  public
+    function Append(const AJSON: TJSONObject): Boolean; virtual;
+    function Update(const AJSON: TJSONObject): Boolean; virtual;
+    function Delete: Boolean; virtual;
+    function ListAll(const AParams: TDictionary<string, string>): TFDQuery; virtual;
+    function GetById(const AId: string): TFDQuery; virtual;
+    function GetRecordCount: Int64; virtual;
+  end;
+
+var
+  ProvidersCadastro: TProvidersCadastro;
+
+implementation
+
+{%CLASSGROUP 'System.Classes.TPersistent'}
+
+{$R *.dfm}
+
+end.

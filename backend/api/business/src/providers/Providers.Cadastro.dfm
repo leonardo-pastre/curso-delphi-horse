@@ -1,0 +1,27 @@
+inherited ProvidersCadastro: TProvidersCadastro
+  inherited FDPhysPgDriverLink: TFDPhysPgDriverLink
+    Left = 176
+    Top = 56
+  end
+  object QryPesquisa: TFDQuery
+    CachedUpdates = True
+    Connection = FDConnection
+    Left = 56
+    Top = 160
+  end
+  object QryRecordCount: TFDQuery
+    CachedUpdates = True
+    Connection = FDConnection
+    Left = 176
+    Top = 160
+    object QryRecordCountCOUNT: TLargeintField
+      FieldName = 'COUNT'
+    end
+  end
+  object QryCadastro: TFDQuery
+    CachedUpdates = True
+    Connection = FDConnection
+    Left = 280
+    Top = 160
+  end
+end
